@@ -1,0 +1,9 @@
+# Netlify configuration for StudyCards frontend
+[build]
+  publish = "."
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"

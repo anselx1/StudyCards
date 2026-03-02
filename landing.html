@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyCards – Master Any Subject with AI</title>
+    <meta name="description"
+        content="Upload a PDF or Word document and let AI instantly generate personalized flashcards. Study smarter, retain more.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="landing.css">
+</head>
+
+<body>
+
+    <!-- Animated Background -->
+    <div class="bg-blobs">
+        <div class="blob b1"></div>
+        <div class="blob b2"></div>
+        <div class="blob b3"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-inner">
+            <a href="#" class="nav-logo"><i class="fa-solid fa-layer-group"></i> StudyCards</a>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#how-it-works">How It Works</a>
+                <a href="#pricing">Pricing</a>
+                <a href="login.html" class="btn-nav-ghost">Login</a>
+                <a href="login.html" class="btn-nav-cta">Get Started <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-badge"><i class="fa-solid fa-robot"></i> Powered by Google Gemini AI</div>
+        <h1 class="hero-title">Study <span class="gradient-text">Smarter</span>,<br>Not Harder.</h1>
+        <p class="hero-subtitle">Upload any PDF or Word document and watch AI instantly turn it into a polished set of
+            flashcards. No typing, no guessing — just focused studying.</p>
+        <div class="hero-actions">
+            <a href="login.html" class="btn-primary" id="cta-main">
+                <i class="fa-solid fa-rocket"></i> Start Studying Free
+            </a>
+            <a href="#how-it-works" class="btn-ghost">
+                <i class="fa-solid fa-play"></i> See How It Works
+            </a>
+        </div>
+        <!-- Floating card mockup -->
+        <div class="hero-card-demo" aria-hidden="true">
+            <div class="demo-card" id="demo-card">
+                <div class="demo-card-inner">
+                    <div class="demo-face demo-front">
+                        <span class="demo-label">Question</span>
+                        <p>What is the primary role of mitochondria in a cell?</p>
+                    </div>
+                    <div class="demo-face demo-back">
+                        <span class="demo-label">Answer</span>
+                        <p>The mitochondria act as the powerhouse of the cell, generating ATP through cellular
+                            respiration.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="demo-card-hint">Click to flip &nbsp;<i class="fa-solid fa-rotate"></i></div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section" id="features">
+        <div class="section-inner">
+            <p class="section-label">Why StudyCards?</p>
+            <h2 class="section-title">Everything you need to ace your studies</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #6366f1, #a855f7);">
+                        <i class="fa-solid fa-file-arrow-up"></i>
+                    </div>
+                    <h3>Upload Any Document</h3>
+                    <p>Drag & drop a PDF or Word file. Our parser extracts the content right in your browser — your
+                        files never leave your device.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #3b82f6, #06b6d4);">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    </div>
+                    <h3>AI-Generated Cards</h3>
+                    <p>Google's Gemini AI reads your content and intelligently identifies the key concepts, crafting
+                        focused Q&A flashcards automatically.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #ec4899, #f43f5e);">
+                        <i class="fa-solid fa-rotate"></i>
+                    </div>
+                    <h3>Smooth 3D Flip Cards</h3>
+                    <p>Beautiful, satisfying card animations that feel great to use. Click, tap, or use your keyboard
+                        arrows to study at your own pace.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #22c55e, #16a34a);">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                    </div>
+                    <h3>Add Your Own Cards</h3>
+                    <p>AI-generated cards not enough? Easily add custom cards manually to supplement your AI deck with
+                        your own notes and insights.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #f59e0b, #ef4444);">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                    <h3>Track Your Progress</h3>
+                    <p>A visual progress bar shows you exactly how far through your deck you are, keeping you motivated
+                        in every study session.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #8b5cf6, #6366f1);">
+                        <i class="fa-solid fa-keyboard"></i>
+                    </div>
+                    <h3>Keyboard Shortcuts</h3>
+                    <p>Power users love our keyboard support. Use arrow keys to navigate and Space to flip — study
+                        without ever leaving your keyboard.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="section alt-section" id="how-it-works">
+        <div class="section-inner">
+            <p class="section-label">Simple & Fast</p>
+            <h2 class="section-title">From document to flashcards in seconds</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Upload Your File</h3>
+                        <p>Drag any PDF textbook, lecture notes, or Word document into the dropzone. Your file is
+                            processed locally.</p>
+                    </div>
+                </div>
+                <div class="step-connector"><i class="fa-solid fa-arrow-down"></i></div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>AI Generates Cards</h3>
+                        <p>Gemini AI analyzes the text, identifies the most important concepts, and generates up to 5
+                            targeted Q&A pairs.</p>
+                    </div>
+                </div>
+                <div class="step-connector"><i class="fa-solid fa-arrow-down"></i></div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Study & Master</h3>
+                        <p>Flip through your cards, track your progress, and add more documents or your own manual cards
+                            until you've mastered everything.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="section" id="pricing">
+        <div class="section-inner">
+            <p class="section-label">Simple Pricing</p>
+            <h2 class="section-title">Start free, upgrade when you need AI power</h2>
+            <div class="pricing-grid">
+                <!-- Free Tier -->
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <p class="tier-name">Free</p>
+                        <div class="tier-price"><span class="price-amount">$0</span><span
+                                class="price-period">/month</span></div>
+                        <p class="tier-desc">Perfect for getting started with manual study cards.</p>
+                    </div>
+                    <ul class="tier-features">
+                        <li><i class="fa-solid fa-check"></i> Manual flashcard creation</li>
+                        <li><i class="fa-solid fa-check"></i> 3D flip card animations</li>
+                        <li><i class="fa-solid fa-check"></i> Keyboard navigation</li>
+                        <li><i class="fa-solid fa-check"></i> Progress tracking</li>
+                        <li class="disabled"><i class="fa-solid fa-xmark"></i> AI document upload</li>
+                        <li class="disabled"><i class="fa-solid fa-xmark"></i> PDF & Word parsing</li>
+                    </ul>
+                    <a href="login.html" class="btn-tier btn-tier-ghost">Get Started Free</a>
+                </div>
+                <!-- Pro Tier -->
+                <div class="pricing-card featured">
+                    <div class="featured-badge"><i class="fa-solid fa-star"></i> Most Popular</div>
+                    <div class="pricing-header">
+                        <p class="tier-name">Pro</p>
+                        <div class="tier-price"><span class="price-amount">$9.99</span><span
+                                class="price-period">/month</span></div>
+                        <p class="tier-desc">For students who want AI to do the heavy lifting.</p>
+                    </div>
+                    <ul class="tier-features">
+                        <li><i class="fa-solid fa-check"></i> Everything in Free</li>
+                        <li><i class="fa-solid fa-check"></i> AI PDF generation</li>
+                        <li><i class="fa-solid fa-check"></i> AI Word Doc generation</li>
+                        <li><i class="fa-solid fa-check"></i> Unlimited AI cards</li>
+                        <li><i class="fa-solid fa-check"></i> Priority support</li>
+                        <li><i class="fa-solid fa-check"></i> Early access to new features</li>
+                    </ul>
+                    <a href="login.html" class="btn-tier btn-tier-primary"><i class="fa-solid fa-rocket"></i> Upgrade to
+                        Pro</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="section cta-section">
+        <div class="section-inner cta-inner">
+            <h2>Ready to transform the way you study?</h2>
+            <p>Join thousands of students studying smarter with AI-powered flashcards.</p>
+            <a href="login.html" class="btn-primary large">
+                <i class="fa-solid fa-layer-group"></i> Get Started Free
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p><i class="fa-solid fa-layer-group"></i> StudyCards &nbsp;·&nbsp; Built with Google Gemini AI &nbsp;·&nbsp; <a
+                href="index.html">Open App</a></p>
+    </footer>
+
+    <script src="landing.js"></script>
+</body>
+
+</html>

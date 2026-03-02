@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Cards | Master Any Subject</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Document Parsing Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script>pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+</head>
+
+<body>
+    <div class="blob-c">
+        <div class="shape blob-1"></div>
+        <div class="shape blob-2"></div>
+        <div class="shape blob-3"></div>
+    </div>
+
+    <div class="container glass-panel">
+        <header>
+            <div class="header-top">
+                <a href="landing.html" class="icon-btn back-btn" title="Back to Home"><i
+                        class="fa-solid fa-arrow-left"></i></a>
+                <h1><i class="fa-solid fa-layer-group"></i> StudyCards</h1>
+                <div class="header-right">
+                    <span class="user-badge" id="user-badge"></span>
+                    <button class="icon-btn" id="btn-settings" title="Settings"><i
+                            class="fa-solid fa-gear"></i></button>
+                    <button class="icon-btn logout-btn" id="btn-logout" title="Logout"><i
+                            class="fa-solid fa-right-from-bracket"></i></button>
+                </div>
+            </div>
+            <p>Master your subjects, one card at a time.</p>
+        </header>
+
+
+        <!-- Generate from Document Section -->
+        <div class="generate-section">
+            <div class="upload-zone" id="upload-zone">
+                <i class="fa-solid fa-file-arrow-up"></i>
+                <p>Drag & Drop a PDF or Word Doc here</p>
+                <p class="small-text">or click to browse</p>
+                <input type="file" id="file-input" accept=".pdf,.docx" hidden>
+            </div>
+            <div class="loading-state hidden" id="loading-state">
+                <div class="spinner"></div>
+                <p id="loading-text">Extracting text...</p>
+            </div>
+        </div>
+
+        <div class="flashcard-container">
+            <div class="flashcard" id="flashcard">
+                <div class="flashcard-inner">
+                    <div class="flashcard-front">
+                        <span class="card-label">Question</span>
+                        <div class="card-content" id="card-front-content">...</div>
+                    </div>
+                    <div class="flashcard-back">
+                        <span class="card-label">Answer</span>
+                        <div class="card-content" id="card-back-content">...</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress" id="progress"></div>
+            </div>
+            <p class="card-counter" id="card-counter">Loading...</p>
+        </div>
+
+        <div class="controls">
+            <button class="btn btn-nav" id="btn-prev"><i class="fa-solid fa-arrow-left"></i></button>
+            <button class="btn btn-primary" id="btn-flip"><i class="fa-solid fa-rotate"></i> Flip</button>
+            <button class="btn btn-nav" id="btn-next"><i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+
+        <div class="add-card-section">
+            <button class="btn btn-secondary" id="btn-toggle-form"><i class="fa-solid fa-plus"></i> Add Manual
+                Card</button>
+
+            <form id="add-card-form" class="hidden">
+                <div class="form-group">
+                    <label for="question-input">Question (Front)</label>
+                    <textarea id="question-input" rows="2" placeholder="Enter the question..." required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="answer-input">Answer (Back)</label>
+                    <textarea id="answer-input" rows="3" placeholder="Enter the answer..." required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full"><i class="fa-solid fa-check"></i> Save
+                    Card</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div class="modal-overlay hidden" id="settings-modal">
+        <div class="modal glass-panel">
+            <div class="modal-header">
+                <h2><i class="fa-solid fa-robot"></i> AI Settings</h2>
+                <button class="icon-btn close-modal" id="btn-close-settings"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body">
+                <p class="modal-desc">To automatically generate flashcards from documents, you need a free Google Gemini
+                    API Key.</p>
+                <div class="form-group">
+                    <label for="api-key-input">Gemini API Key</label>
+                    <input type="password" id="api-key-input" placeholder="AIzaSy...">
+                    <p class="help-text">Your key is stored securely in your browser's local storage and is never sent
+                        to our servers.</p>
+                </div>
+                <button class="btn btn-primary btn-full" id="btn-save-key"><i class="fa-solid fa-save"></i> Save
+                    Key</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Paywall Modal -->
+    <div class="modal-overlay hidden" id="paywall-modal">
+        <div class="modal glass-panel paywall-modal">
+            <div class="modal-header">
+                <h2><i class="fa-solid fa-rocket"></i> Upgrade to Pro</h2>
+                <button class="icon-btn" id="btn-close-paywall"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body">
+                <p class="modal-desc">AI document generation is a <strong>Pro</strong> feature. Upgrade to unlock PDF
+                    &amp; Word uploads and let AI build your entire deck automatically.</p>
+                <ul class="paywall-features">
+                    <li><i class="fa-solid fa-check"></i> Upload PDF &amp; Word documents</li>
+                    <li><i class="fa-solid fa-check"></i> AI generates flashcards instantly</li>
+                    <li><i class="fa-solid fa-check"></i> Unlimited AI card generation</li>
+                </ul>
+                <div class="paywall-price">$9.99<span>/month</span></div>
+                <button class="btn btn-primary btn-full" id="btn-upgrade"><i class="fa-solid fa-rocket"></i> Upgrade
+                    Now</button>
+                <p class="paywall-note">Simulated upgrade for demo — no real payment required.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
